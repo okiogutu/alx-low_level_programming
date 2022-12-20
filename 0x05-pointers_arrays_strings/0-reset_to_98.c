@@ -1,9 +1,11 @@
 #include "main.h"
 #include <stdio.h>
+
 /**
- * check the code
+ * first assigned array
  */
+
 void reset_to_98(int *n)
 {
-	*n = 98
+	*n = 98;
 }
