@@ -1,20 +1,23 @@
 #!/usr/bin/python3
-"""island perimeter"""
-def island_perimeter(grid):
-    """function to return island perimeter"""
-        c = 0
-    length = len(grid) - 1
-    width = len(grid[0]) - 1
+"""Module co puting perimeter of an island"""
 
-    for i, r in enumerate(grid):
-        for j, n in enumerate(r):
-            if n == 1:
-                if i == 0 or grid[i - 1][j] != 1:
-                    c += 1
-                if j == 0 or grid[i][j - 1] != 1:
-                    c += 1
-                if j == width or grid[i][j + 1] != 1:
-                    c += 1
-                if i == length or grid[i + 1][j] != 1:
-                    c += 1
-    return c
+def island_perimeter(grid):
+    """island perimeter function"""
+    perimeter = 0
+
+    rows, cols = len(grid), len(grid[0])
+
+    for row in range(rows):
+        for col in range(cols):
+            if grid[row][col] == 1:
+                perimeter += 4
+
+                # Check left neighbor
+                if col > 0 and grid[row][col - 1] == 1:
+                    perimeter -= 2
+
+                # Check top neighbor
+                if row > 0 and grid[row - 1][col] == 1:
+                    perimeter -= 2
+
+    return perimeter
